@@ -1,7 +1,7 @@
 import { group } from 'k6'
 import Login from '../requests/login.request.js'
 import data from '../data/usuarios.json'
-import User from '../requests/user.request.js'
+import Product from '../requests/products.request.js'
 
 export const options = {
     stages: [
@@ -18,13 +18,13 @@ export const options = {
 export default function () {
 
     let login = new Login()
-    let user = new User()
+    let product = new Product()
 
     group('login and get token', () => {
         login.access(data.usuarioValido.user, data.usuarioValido.pass)
     })
 
-    group('list users', () => {
-        user.list(login.getToken())
+    group('list products', () => {
+        product.list(login.getToken())
     })    
 }

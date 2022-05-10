@@ -1,12 +1,12 @@
 import { check } from 'k6'
 import http from 'k6/http'
-import Utils from '../utils/utils'
+import Utils from '../utils/utils.js'
 
 export default class Login{
     #token
 
     access(user, pass){
-        let response = http.post(`${Utils.getBaseUrl()}/login`, JSON.stringify(
+        let response = http.post(`${Utils.getBaseUrl()}login`, JSON.stringify(
             {
                 "username": user,
                 "password": pass
@@ -18,7 +18,7 @@ export default class Login{
             }
         })
         this.#token = response.json('accessToken')
-        check(request, {
+        check(response, {
             "status deve ser 201": (r) => r.status === 201
         })
     }
