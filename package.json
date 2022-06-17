@@ -6,7 +6,7 @@
   "scripts": {
     "pretest:user": "webpack",
     "test:user": "k6 run dist/user.test.js",
-    "pretestproducts": "webpack",
+    "pretest:products": "webpack",
     "test:products": "k6 run dist/products.test.js",
     "pretest:customers": "webpack",
     "test:customers": "k6 run dist/customers.test.js"
